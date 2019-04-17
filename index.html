@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>XOXO</title>
+    <link rel="stylesheet" href="dist/styles/game.css">
+</head>
+<header>Header</header>
+<aside>
+    <h2>Panel Control</h2>
+    <div class="control">
+        <div class="control__item">
+            <h3>Player #1</h3>
+            <label for="player-1">Name</label>
+            <input type="text" name="name-player-1" value="Mauro" />
+            <label for="symbol-1">Symbol</label>
+            <input type="text" name="name-symbol-1" value="X" />
+        </div>
+        <div class="control__item">
+            <h3>Player #2</h3>
+            <label for="player-2">Name</label>
+            <input type="text" name="name-player-2" value="Bruna" />
+            <label for="player-2">Symbol</label>
+            <input type="text" name="name-symbol-2" value="O" />
+        </div>
+        <button class="btn play">Play / Reset</button>
+    </div>
+</aside>
+<main>
+    <div class="board"></div>
+</main>
+<footer>Footer</footer>
+<body>
+    <script type="module" src="/dist/scripts/main.js"></script>
+</body>
+</html>
