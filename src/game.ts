@@ -70,7 +70,6 @@ export default class Xoxo {
 
     gameIsOver(player: number) {
         this._gameOver = true;
-        this.cleanBoard();
         this._board.innerHTML = `<p>${this._symbols.players[player]} win this game!<p>`;
     }
 
