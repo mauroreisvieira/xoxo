@@ -4,28 +4,17 @@
 
 body {
   display: grid;
-  grid-template-areas:
-  "header header"
-  "aside main"
-  "footer footer";
+  max-width: 1280px;
   background-color: #fff;
   padding: 0;
 }
 
-header {
-  grid-area: header;
-}
-
 aside {
-  grid-area: aside;
+  padding: var(--space-hg);
 }
 
 main {
-  grid-area: main;
-}
-
-footer {
-  grid-area: footer;
+  padding: var(--space-hg);
 }
 
 .control {
@@ -52,12 +41,12 @@ footer {
 }
 
 .board > div {
-  background-color: #18A991;
-  border-right: 10px solid #18A991;
+  background-color: var(--color-accent-base);
   margin: 10px;
   border-radius: 2px;
   font-size: 6em;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }

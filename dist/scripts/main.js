@@ -1,11 +1,14 @@
 import Player from './player.js'
 import Game from './game.js'
+import { WinnerAlert } from './custom-elements/winner-alert.js';
 
 const board = document.querySelector('.board');
 const play = document.querySelector('.play');
 const game = new Game(board);
 
 let players = {};
+
+customElements.define('winner-alert', WinnerAlert);
 
 play.addEventListener('click', () => {
     game.reset();
@@ -14,12 +17,12 @@ play.addEventListener('click', () => {
     delete players.two;
     players.one = new Player(
         document.querySelector('[name="name-player-1"]').value,
-        document.querySelector('[name="name-symbol-1"]').value
+        document.querySelector('[name="symbol-player-1"]').value
     );
 
     players.two = new Player(
         document.querySelector('[name="name-player-2"]').value,
-        document.querySelector('[name="name-symbol-2"]').value
+        document.querySelector('[name="symbol-player-2"]').value
     );
 
     game.symbol = players.one.symbol;
