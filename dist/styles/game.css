@@ -3,33 +3,14 @@
 }
 
 body {
-  display: grid;
   max-width: 1280px;
-  background-color: #fff;
   padding: 0;
-}
-
-aside {
-  padding: var(--space-hg);
+  background-color: #fff;
+  font-family: sans-serif;
 }
 
 main {
-  padding: var(--space-hg);
-}
-
-.control {
-  display: flex;
-  flex-direction: column;
-}
-
-.control__item {
-  display: flex;
-  flex-direction: column;
-}
-
-.control__item label {
-  margin: 16px 0 8px;
-  font-weight: bold;
+  padding: 24px;
 }
 
 .board {
@@ -41,7 +22,7 @@ main {
 }
 
 .board > div {
-  background-color: var(--color-accent-base);
+  background-color: #ddd;
   margin: 10px;
   border-radius: 2px;
   font-size: 6em;

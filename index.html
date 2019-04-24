@@ -2,73 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>XOXO</title>
+    <title>XOXO Game</title>
     <link rel="stylesheet" href="dist/styles/game.css">
-    <link rel="stylesheet" href="./node_modules/stewed/dist/stewed.css">
 </head>
 <body class="container">
-    <aside>
-        <div class="control">
-            <div class="control__item">
-                <h3>Player #1</h3>
-                <div class="form-field form-field--column">
-                    <label for="player-1">Name</label>
-                    <div class="textfield">
-                        <input
-                        class="textfield__control"
-                        type="text"
-                        name="name-player-1"
-                        value="John"
-                        required />
-                    </div>
-                </div>
-                <div class="form-field form-field--column">
-                    <label for="symbol-player-1">Symbol</label>
-                    <div class="textfield">
-                        <input
-                        type="text"
-                        name="symbol-player-1"
-                        value="👨"
-                        class="textfield__control"
-                        />
-                    </div>
-                </div>
-            </div>
-            <div class="control__item">
-                <h4>Player #2</h4>
-                <div class="form-field form-field--column">
-                    <label for="player-2">Name</label>
-                    <div class="textfield">
-                        <input
-                        class="textfield__control"
-                        type="text"
-                        name="name-player-2"
-                        value="Ann"
-                        required />
-                    </div>
-                </div>
-                <div class="form-field form-field--column">
-                    <label for="symbol-player-2">Symbol</label>
-                    <div class="textfield">
-                        <input
-                        type="text"
-                        name="symbol-player-2"
-                        value="👧"
-                        class="textfield__control"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn btn--primary play">Play / Reset</button>
-        </div>
-    </aside>
     <main>
-        <winner-alert type="success"></winner-alert>
-        <div class="alert alert--success" style="display: none">
-            <div class="alert__title"></div>
-        </div>
         <div class="board"></div>
+        <button class="reset"> Reset </button>
     </main>
     <script type="module" src="/dist/scripts/main.js"></script>
 </body>

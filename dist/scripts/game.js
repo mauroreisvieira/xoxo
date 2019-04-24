@@ -7,8 +7,7 @@ export default class Xoxo {
         this._board = container;
         this._tails = ['', '', '', '', '', '', '', '', ''];
         this._symbols = {
-            options: [],
-            players: [],
+            options: ['X', 'O'],
             index: 0,
             change() {
                 this.index = (this.index === 0 ? 1 : 0);
@@ -25,12 +24,6 @@ export default class Xoxo {
             [0, 4, 8],
             [2, 4, 6],
         ];
-    }
-    set symbol(value) {
-        this._symbols.options.push(value);
-    }
-    set player(value) {
-        this._symbols.players.push(value);
     }
     reset() {
         this._tails.fill('');
@@ -76,7 +69,6 @@ export default class Xoxo {
     _gameIsOver(player) {
         this._isGameOver = true;
         this._cleanBoard();
-        this._winner(this._symbols.players[player]);
     }
     _draw() {
         this._cleanBoard();
@@ -94,10 +86,5 @@ export default class Xoxo {
     }
     _cleanBoard() {
         this._board.innerHTML = '';
-    }
-    _winner(name) {
-        const alert = document.querySelector('.alert');
-        alert.children[0].innerText = `${name} win this game!`;
-        alert.style.removeProperty('display');
     }
 }
