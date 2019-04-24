@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   overflow: hidden;
+  user-select: none;
 }
 
 main {
@@ -36,7 +37,7 @@ main {
   pointer-events: none;
 }
 
-.board.game-over > div:not(winning-sequence) {
+.board.game-over > div:not(.winning-sequence) {
   opacity: .6;
 }
 
@@ -47,10 +48,6 @@ main {
   height: 120px;
   cursor: pointer;
   font-size: 6em;
-}
-
-.board > div.winning-sequence path {
-  stroke: #693AB7 !important;
 }
 
 .board > div > svg {
@@ -70,6 +67,10 @@ main {
   stroke: #f2ebd3;
   stroke-dasharray: 301.635;
   stroke-dashoffset: 0;
+}
+
+.board > div.winning-sequence path {
+  stroke: #693AB7 !important;
 }
 
 .board > div:nth-child(1),

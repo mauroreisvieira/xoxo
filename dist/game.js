@@ -1,3 +1,4 @@
+import { cssClasses, artifacts } from './constants.js';
 export default class Xoxo {
     constructor(container) {
         this._piece = [];
@@ -7,7 +8,7 @@ export default class Xoxo {
         this._board = container;
         this._piece = new Array(9);
         this._symbols = {
-            options: ['<svg class="x" aria-label="X" role="img" viewBox="0 0 128 128"><path class="hFJ9Ve" d="M16,16L112,112" style="stroke: rgb(84, 84, 84); stroke-dasharray: 135.764; stroke-dashoffset: 0;"></path><path class="hFJ9Ve" d="M112,16L16,112" style="stroke: rgb(84, 84, 84); stroke-dasharray: 135.764; stroke-dashoffset: 0;"></path></svg>', '<svg class="o" aria-label="O" role="img" viewBox="0 0 128 128"><path class="hFJ9Ve" d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16" style="stroke: rgb(242, 235, 211); stroke-dasharray: 301.635; stroke-dashoffset: 0;"></path></svg>'],
+            options: [artifacts.X, artifacts.O],
             index: 0,
             change() {
                 this.index = (this.index === 0 ? 1 : 0);
@@ -26,7 +27,7 @@ export default class Xoxo {
         ];
     }
     reset() {
-        this._board.classList.remove('game-over');
+        this._board.classList.remove(cssClasses.GAME_OVER);
         this._piece.fill('');
         this.start();
     }
@@ -67,12 +68,13 @@ export default class Xoxo {
     }
     _gameIsOver(index, sequence) {
         this._isGameOver = true;
-        this._board.classList.add('game-over');
-        this._board.classList.add('game-over');
+        this._board.classList.add(cssClasses.GAME_OVER);
         // winning sequence
-        this._winningSequences[sequence].map((index) => {
-            this._board.children[index].classList.add('winning-sequence');
-        });
+        if (index && sequence) {
+            this._winningSequences[sequence].map((index) => {
+                this._board.children[index].classList.add(cssClasses.WINNING_SEQUENCE);
+            });
+        }
     }
     _draw() {
         this._cleanBoard();

@@ -8,3 +8,7 @@ game.start();
 reset.addEventListener('click', () => {
     game.reset();
 })
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}

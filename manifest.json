@@ -1,0 +1,22 @@
+{
+   "name":"Xoxo Gane",
+   "short_name":"Xoxo",
+   "start_url":"/",
+   "background_color": "#14bdac",
+   "theme_color":"#14bdac",
+   "description":"",
+   "display":"standalone",
+   "icons":[
+      {
+         "src":"./assets/img/example-1.png",
+         "sizes":"192x192",
+         "type":"image/png"
+      },
+      {
+         "src":"./assets/img/example-2.png",
+         "sizes":"512x512",
+         "type":"image/png"
+      }
+   ],
+   "scope":"/"
+}
