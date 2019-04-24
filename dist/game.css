@@ -13,6 +13,7 @@ body {
 main {
   position: relative;
   max-width: 980px;
+  height: 100vh;
   margin: auto;
   overflow: hidden;
 }
@@ -20,7 +21,7 @@ main {
 .game {
   display: flex;
   align-items: center;
-  height: calc(100vh - 52px);
+  height: calc(100% - 52px);
   background-color: #14bdac;
 }
 
