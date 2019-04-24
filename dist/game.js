@@ -1,11 +1,11 @@
 export default class Xoxo {
     constructor(container) {
-        this._tails = [];
+        this._piece = [];
         this._symbols = [];
         this._winningSequences = [];
         this._isGameOver = false;
         this._board = container;
-        this._tails = ['', '', '', '', '', '', '', '', ''];
+        this._piece = new Array(9);
         this._symbols = {
             options: ['X', 'O'],
             index: 0,
@@ -26,26 +26,25 @@ export default class Xoxo {
         ];
     }
     reset() {
-        this._tails.fill('');
-        this._symbols.options = [];
-        this._symbols.player = [];
-        // clean board
-        this._cleanBoard();
+        this._board.classList.remove('game-is-over');
+        this._piece.fill('');
+        this.start();
     }
     start() {
-        this._draw();
-        this._tails.fill('');
+        this._piece.fill('');
         this._isGameOver = false;
+        this._draw();
     }
     _move(position) {
         if (this._isGameOver) {
             return false;
         }
-        if (this._tails[position] === '') {
-            this._tails[position] = this._symbols.options[this._symbols.index];
+        if (this._piece[position] === '') {
+            this._piece[position] = this._symbols.options[this._symbols.index];
             this._draw();
-            if (this._checkWinningSequences(this._symbols.options[this._symbols.index]) >= 0) {
-                this._gameIsOver(this._symbols.index);
+            const winningSequence = this._checkWinningSequences(this._symbols.index);
+            if (winningSequence >= 0) {
+                this._gameIsOver(this._symbols.index, winningSequence);
             }
             else {
                 this._symbols.change();
@@ -56,27 +55,28 @@ export default class Xoxo {
             return false;
         }
     }
-    _checkWinningSequences(simbol) {
+    _checkWinningSequences(index) {
         for (const i in this._winningSequences) {
-            if (this._tails[this._winningSequences[i][0]] === simbol
-                && this._tails[this._winningSequences[i][1]] === simbol
-                && this._tails[this._winningSequences[i][2]] === simbol) {
+            if (this._piece[this._winningSequences[i][0]] === this._symbols.options[index]
+                && this._piece[this._winningSequences[i][1]] === this._symbols.options[index]
+                && this._piece[this._winningSequences[i][2]] === this._symbols.options[index]) {
                 return i;
             }
         }
         return -1;
     }
-    _gameIsOver(player) {
+    _gameIsOver(index, sequence) {
         this._isGameOver = true;
-        this._cleanBoard();
+        this._board.classList.add('game-is-over');
+        console.log(`${this._symbols.options[index]} win with sequence ${this._winningSequences[sequence]}!`);
     }
     _draw() {
         this._cleanBoard();
-        for (const i of Object.keys(this._tails)) {
-            this._board.appendChild(this._buildTail(this._tails[i], i));
+        for (const i of Object.keys(this._piece)) {
+            this._board.appendChild(this._buildPiece(this._piece[i], i));
         }
     }
-    _buildTail(value, position) {
+    _buildPiece(value, position) {
         const elm = document.createElement('div');
         elm.textContent = value;
         elm.addEventListener('click', () => {

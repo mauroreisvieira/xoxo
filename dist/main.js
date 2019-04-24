@@ -1,4 +1,3 @@
-
 import Game from './game.js'
 
 const board = document.querySelector('.board');

@@ -7,7 +7,7 @@ export default class Xoxo {
 
     constructor (container: HTMLElement) {
         this._board = container;
-        this._piece = ['', '', '', '', '', '', '', '', ''];
+        this._piece = new Array(9);
         this._symbols = {
             options: ['X', 'O'],
             index: 0,
@@ -29,17 +29,15 @@ export default class Xoxo {
     }
 
     public reset(): void {
+        this._board.classList.remove('game-is-over');
         this._piece.fill('');
-        this._symbols.options = [];
-        this._symbols.player = [];
-        // clean board
-        this._cleanBoard();
+        this.start();
     }
 
     public start(): void {
-        this._draw();
         this._piece.fill('');
         this._isGameOver = false;
+        this._draw();
     }
 
     private _move(position: number): boolean {
@@ -49,8 +47,9 @@ export default class Xoxo {
         if (this._piece[position] === '') {
             this._piece[position] = this._symbols.options[this._symbols.index];
             this._draw();
-            if (this._checkWinningSequences( this._symbols.options[this._symbols.index]) >= 0) {
-                this._gameIsOver(this._symbols.index);
+            const winningSequence = this._checkWinningSequences( this._symbols.index );
+            if (winningSequence >= 0) {
+                this._gameIsOver(this._symbols.index, winningSequence);
             } else {
                 this._symbols.change();
             }
@@ -60,30 +59,31 @@ export default class Xoxo {
         }
     }
 
-    private _checkWinningSequences(simbol: any): any {
+    private _checkWinningSequences(index: number): any {
         for ( const i in this._winningSequences ) {
-            if (this._piece[ this._winningSequences[i][0] ] === simbol
-                    && this._piece[ this._winningSequences[i][1] ] === simbol
-                    && this._piece[ this._winningSequences[i][2] ] === simbol) {
+            if (this._piece[ this._winningSequences[i][0] ] === this._symbols.options[index]
+                    && this._piece[ this._winningSequences[i][1] ] === this._symbols.options[index]
+                    && this._piece[ this._winningSequences[i][2] ] === this._symbols.options[index]) {
                 return i;
             }
         }
         return -1;
     }
 
-    private _gameIsOver(player: number) {
+    private _gameIsOver(index: number, sequence: number) {
         this._isGameOver = true;
-        this._cleanBoard();
+        this._board.classList.add('game-is-over');
+        console.log(`${this._symbols.options[index]} win with sequence ${this._winningSequences[sequence]}!`);
     }
 
     private _draw() {
         this._cleanBoard();
         for ( const i of Object.keys(this._piece) ) {
-            this._board.appendChild(this._buildTail(this._piece[i], i));
+            this._board.appendChild(this._buildPiece(this._piece[i], i));
         }
     }
 
-    private _buildTail(value: string, position: any): HTMLElement {
+    private _buildPiece(value: string, position: any): HTMLElement {
         const elm = document.createElement('div');
         elm.textContent = value;
         elm.addEventListener('click', () => {
