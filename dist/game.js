@@ -70,11 +70,9 @@ export default class Xoxo {
         this._isGameOver = true;
         this._board.classList.add(cssClasses.GAME_OVER);
         // winning sequence
-        if (index && sequence) {
-            this._winningSequences[sequence].map((index) => {
-                this._board.children[index].classList.add(cssClasses.WINNING_SEQUENCE);
-            });
-        }
+        this._winningSequences[sequence].map((index) => {
+            this._board.children[index].classList.add(cssClasses.WINNING_SEQUENCE);
+        });
     }
     _draw() {
         this._cleanBoard();
