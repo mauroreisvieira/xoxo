@@ -4,6 +4,7 @@
 
 body {
   padding: 0;
+  margin: 0;
   font-family: sans-serif;
 }
 
@@ -52,6 +53,20 @@ main {
 .board > div:nth-child(8) {
   border-left: 10px solid #09a192;
   border-right: 10px solid #09a192;
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+  .board {
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .board > div {
+    height: auto;
+  }
 }
 
 .board.game-is-over {
