@@ -1,5 +1,5 @@
 export default class Xoxo {
-    private _tails: any = [];
+    private _piece: any = [];
     private _symbols: any = [];
     private _board: HTMLElement;
     private _winningSequences: any = [];
@@ -7,7 +7,7 @@ export default class Xoxo {
 
     constructor (container: HTMLElement) {
         this._board = container;
-        this._tails = ['', '', '', '', '', '', '', '', ''];
+        this._piece = ['', '', '', '', '', '', '', '', ''];
         this._symbols = {
             options: ['X', 'O'],
             index: 0,
@@ -29,7 +29,7 @@ export default class Xoxo {
     }
 
     public reset(): void {
-        this._tails.fill('');
+        this._piece.fill('');
         this._symbols.options = [];
         this._symbols.player = [];
         // clean board
@@ -38,7 +38,7 @@ export default class Xoxo {
 
     public start(): void {
         this._draw();
-        this._tails.fill('');
+        this._piece.fill('');
         this._isGameOver = false;
     }
 
@@ -46,8 +46,8 @@ export default class Xoxo {
         if (this._isGameOver) {
             return false;
         }
-        if (this._tails[position] === '') {
-            this._tails[position] = this._symbols.options[this._symbols.index];
+        if (this._piece[position] === '') {
+            this._piece[position] = this._symbols.options[this._symbols.index];
             this._draw();
             if (this._checkWinningSequences( this._symbols.options[this._symbols.index]) >= 0) {
                 this._gameIsOver(this._symbols.index);
@@ -62,9 +62,9 @@ export default class Xoxo {
 
     private _checkWinningSequences(simbol: any): any {
         for ( const i in this._winningSequences ) {
-            if (this._tails[ this._winningSequences[i][0] ] === simbol
-                    && this._tails[ this._winningSequences[i][1] ] === simbol
-                    && this._tails[ this._winningSequences[i][2] ] === simbol) {
+            if (this._piece[ this._winningSequences[i][0] ] === simbol
+                    && this._piece[ this._winningSequences[i][1] ] === simbol
+                    && this._piece[ this._winningSequences[i][2] ] === simbol) {
                 return i;
             }
         }
@@ -78,8 +78,8 @@ export default class Xoxo {
 
     private _draw() {
         this._cleanBoard();
-        for ( const i of Object.keys(this._tails) ) {
-            this._board.appendChild(this._buildTail(this._tails[i], i));
+        for ( const i of Object.keys(this._piece) ) {
+            this._board.appendChild(this._buildTail(this._piece[i], i));
         }
     }
 
