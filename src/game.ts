@@ -9,7 +9,7 @@ export default class Xoxo {
         this._board = container;
         this._piece = new Array(9);
         this._symbols = {
-            options: ['X', 'O'],
+            options: ['<svg class="x" aria-label="X" role="img" viewBox="0 0 128 128"><path d="M16,16L112,112"></path><path d="M112,16L16,112"></path></svg>', '<svg class="o" aria-label="O" role="img" viewBox="0 0 128 128"><path d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16"></path></svg>'],
             index: 0,
             change(): void {
                 this.index = ( this.index === 0 ? 1 : 0 );
@@ -89,7 +89,7 @@ export default class Xoxo {
 
     private _buildPiece(value: string, position: any): HTMLElement {
         const elm = document.createElement('div');
-        elm.textContent = value;
+        elm.innerHTML = value;
         elm.addEventListener('click', () => {
             this._move(position);
         });

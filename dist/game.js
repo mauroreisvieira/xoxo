@@ -7,7 +7,7 @@ export default class Xoxo {
         this._board = container;
         this._piece = new Array(9);
         this._symbols = {
-            options: ['X', 'O'],
+            options: ['<svg class="x" aria-label="X" role="img" viewBox="0 0 128 128"><path class="hFJ9Ve" d="M16,16L112,112" style="stroke: rgb(84, 84, 84); stroke-dasharray: 135.764; stroke-dashoffset: 0;"></path><path class="hFJ9Ve" d="M112,16L16,112" style="stroke: rgb(84, 84, 84); stroke-dasharray: 135.764; stroke-dashoffset: 0;"></path></svg>', '<svg class="o" aria-label="O" role="img" viewBox="0 0 128 128"><path class="hFJ9Ve" d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16" style="stroke: rgb(242, 235, 211); stroke-dasharray: 301.635; stroke-dashoffset: 0;"></path></svg>'],
             index: 0,
             change() {
                 this.index = (this.index === 0 ? 1 : 0);
@@ -82,7 +82,7 @@ export default class Xoxo {
     }
     _buildPiece(value, position) {
         const elm = document.createElement('div');
-        elm.textContent = value;
+        elm.innerHTML = value;
         elm.addEventListener('click', () => {
             this._move(position);
         });
