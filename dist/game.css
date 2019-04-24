@@ -12,7 +12,6 @@ body {
 
 main {
   position: relative;
-  max-width: 980px;
   height: 100vh;
   margin: auto;
   overflow: hidden;
