@@ -35,6 +35,9 @@ main {
   cursor: pointer;
   font-size: 6em;
 }
+.board > div.winning-sequence {
+  color: #693AB7;
+}
 
 .board > div:nth-child(1),
 .board > div:nth-child(3),
@@ -69,7 +72,7 @@ and (-webkit-device-pixel-ratio : 3) {
   }
 }
 
-.board.game-is-over {
+.board.game-over {
   opacity: .6;
   pointer-events: none;
 }

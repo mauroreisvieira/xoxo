@@ -29,7 +29,7 @@ export default class Xoxo {
     }
 
     public reset(): void {
-        this._board.classList.remove('game-is-over');
+        this._board.classList.remove('game-over');
         this._piece.fill('');
         this.start();
     }
@@ -72,8 +72,12 @@ export default class Xoxo {
 
     private _gameIsOver(index: number, sequence: number) {
         this._isGameOver = true;
-        this._board.classList.add('game-is-over');
-        console.log(`${this._symbols.options[index]} win with sequence ${this._winningSequences[sequence]}!`);
+        this._board.classList.add('game-over');
+        this._board.classList.add('game-over');
+        // winning sequence
+        this._winningSequences[sequence].map((index: any) => {
+            (<HTMLElement>this._board.children[index]).classList.add('winning-sequence');
+        });
     }
 
     private _draw() {

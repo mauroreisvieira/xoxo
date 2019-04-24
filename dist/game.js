@@ -26,7 +26,7 @@ export default class Xoxo {
         ];
     }
     reset() {
-        this._board.classList.remove('game-is-over');
+        this._board.classList.remove('game-over');
         this._piece.fill('');
         this.start();
     }
@@ -67,8 +67,12 @@ export default class Xoxo {
     }
     _gameIsOver(index, sequence) {
         this._isGameOver = true;
-        this._board.classList.add('game-is-over');
-        console.log(`${this._symbols.options[index]} win with sequence ${this._winningSequences[sequence]}!`);
+        this._board.classList.add('game-over');
+        this._board.classList.add('game-over');
+        // winning sequence
+        this._winningSequences[sequence].map((index) => {
+            this._board.children[index].classList.add('winning-sequence');
+        });
     }
     _draw() {
         this._cleanBoard();
