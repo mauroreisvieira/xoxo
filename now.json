@@ -1,0 +1,15 @@
+{
+    "version":2,
+    "name":"xoxo",
+    "builds":[
+        { "src":"server/index.js", "use":"@now/node-server" },
+        { "src": "*.html", "use": "@now/static" },
+        { "src": "dist/constants.js", "use": "@now/static" },
+        { "src": "dist/game.js", "use": "@now/static" },
+        { "src": "dist/index.js", "use": "@now/static" },
+        { "src": "dist/game.css", "use": "@now/static" }
+    ],
+    "routes": [
+        { "src": "/", "dest": "index.html" }
+    ]
+}
