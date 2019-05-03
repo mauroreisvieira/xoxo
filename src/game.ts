@@ -1,4 +1,4 @@
-import { cssClasses, artifacts } from './constants';
+import { artifacts, cssClasses } from './constants.js';
 
 export default class Xoxo {
     private _piece: any = [];
@@ -72,7 +72,7 @@ export default class Xoxo {
         return -1;
     }
 
-    private _gameIsOver(index?: number, sequence?: number) {
+    private _gameIsOver(index?: number, sequence?: any) {
         this._isGameOver = true;
         this._board.classList.add(cssClasses.GAME_OVER);
         // winning sequence

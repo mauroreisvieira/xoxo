@@ -1,4 +1,4 @@
-import { cssClasses, artifacts } from './constants.js';
+import { artifacts, cssClasses } from './constants.js';
 export default class Xoxo {
     constructor(container) {
         this._piece = [];

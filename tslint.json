@@ -22,7 +22,7 @@
         "member-ordering": [false],
         "no-consecutive-blank-lines": false,
         "no-shadowed-variable": false,
-        "no-var-requires": true,
+        "no-var-requires": null,
         "arrow-parens": false,
         "no-angle-bracket-type-assertion": false,
         "no-console": [false],
