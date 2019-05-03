@@ -1,8 +1,9 @@
-import { artifacts, cssClasses } from './constants.js';
+import { artifacts, cssClasses, ids } from './constants.js';
 
 export default class Xoxo {
     private _piece: any = [];
     private _symbols: any = [];
+    private _results: any = [];
     private _board: HTMLElement;
     private _winningSequences: any = [];
     private _isGameOver: boolean = false;
@@ -10,8 +11,10 @@ export default class Xoxo {
     constructor (container: HTMLElement) {
         this._board = container;
         this._piece = new Array(9);
+        this._results = [ids.X, ids.O],
         this._symbols = {
             options: [artifacts.X, artifacts.O],
+            players: [ids.X, ids.O],
             index: 0,
             change(): void {
                 this.index = ( this.index === 0 ? 1 : 0 );
@@ -51,7 +54,7 @@ export default class Xoxo {
             this._draw();
             const winningSequence = this._checkWinningSequences( this._symbols.index );
             if (winningSequence >= 0) {
-                this._gameIsOver(this._symbols.index, winningSequence);
+                this._gameIsOver(this._symbols.index, winningSequence, this._symbols.players[this._symbols.index]);
             } else {
                 this._symbols.change();
             }
@@ -72,13 +75,22 @@ export default class Xoxo {
         return -1;
     }
 
-    private _gameIsOver(index?: number, sequence?: any) {
+    private _gameIsOver(index?: number, sequence?: any, player?: any) {
         this._isGameOver = true;
         this._board.classList.add(cssClasses.GAME_OVER);
-        // winning sequence
+        this._showResult(player);
+
         this._winningSequences[sequence].map((index: any) => {
             (<HTMLElement>this._board.children[index]).classList.add(cssClasses.WINNING_SEQUENCE);
         });
+    }
+
+    private _showResult(player: any) {
+        this._results[player] = this._results[player] ? this._results[player] + 1 : 1;
+        const target = document.getElementById(player);
+        if (target && target.firstElementChild) {
+            (<HTMLElement>target.firstElementChild).innerText = this._results[player];
+        }
     }
 
     private _draw() {

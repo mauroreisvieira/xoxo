@@ -9,17 +9,23 @@
 </head>
 <body>
     <main>
-        <div class="game">
-            <div class="board"></div>
-        </div>
-        <div class="options">
-            <button class="btn reset"> Reset Game </button>
-            <button class="btn join"> Join </button>
-        </div>
-    </main>
+       <div class="results">
+        <ul class="player">
+            <li id="playerX">X <strong>-</strong></li>
+            <li id="playerO">O <strong>-</strong></li>
+        </ul>
+       </div>
+       <div class="game">
+        <div class="board"></div>
+    </div>
+    <div class="options">
+        <button class="btn reset"> Reset Game </button>
+        <button class="btn join" hidden> Join </button>
+    </div>
+</main>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-    <script type="module" src="dist/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script type="module" src="dist/index.js"></script>
 </body>
 </html>

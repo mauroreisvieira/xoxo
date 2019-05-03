@@ -1,19 +1,22 @@
-import { artifacts, cssClasses } from './constants.js';
+import { artifacts, cssClasses, ids } from './constants.js';
 export default class Xoxo {
     constructor(container) {
         this._piece = [];
         this._symbols = [];
+        this._results = [];
         this._winningSequences = [];
         this._isGameOver = false;
         this._board = container;
         this._piece = new Array(9);
-        this._symbols = {
-            options: [artifacts.X, artifacts.O],
-            index: 0,
-            change() {
-                this.index = (this.index === 0 ? 1 : 0);
-            },
-        };
+        this._results = [ids.X, ids.O],
+            this._symbols = {
+                options: [artifacts.X, artifacts.O],
+                players: [ids.X, ids.O],
+                index: 0,
+                change() {
+                    this.index = (this.index === 0 ? 1 : 0);
+                },
+            };
         this._isGameOver = false;
         this._winningSequences = [
             [0, 1, 2],
@@ -45,7 +48,7 @@ export default class Xoxo {
             this._draw();
             const winningSequence = this._checkWinningSequences(this._symbols.index);
             if (winningSequence >= 0) {
-                this._gameIsOver(this._symbols.index, winningSequence);
+                this._gameIsOver(this._symbols.index, winningSequence, this._symbols.players[this._symbols.index]);
             }
             else {
                 this._symbols.change();
@@ -66,13 +69,20 @@ export default class Xoxo {
         }
         return -1;
     }
-    _gameIsOver(index, sequence) {
+    _gameIsOver(index, sequence, player) {
         this._isGameOver = true;
         this._board.classList.add(cssClasses.GAME_OVER);
-        // winning sequence
+        this._showResult(player);
         this._winningSequences[sequence].map((index) => {
             this._board.children[index].classList.add(cssClasses.WINNING_SEQUENCE);
         });
+    }
+    _showResult(player) {
+        this._results[player] = this._results[player] ? this._results[player] + 1 : 1;
+        const target = document.getElementById(player);
+        if (target && target.firstElementChild) {
+            target.firstElementChild.innerText = this._results[player];
+        }
     }
     _draw() {
         this._cleanBoard();
