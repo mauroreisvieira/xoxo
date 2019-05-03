@@ -1,0 +1,28 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  margin: auto;
+  padding: 16px;
+  text-transform: uppercase;
+  border: 0;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.reset {
+    background-color: #fff;
+    color: $primary-color;
+  }
+
+  &.join {
+    background-color: $accent-color;
+    color: #fff;
+  }
+}

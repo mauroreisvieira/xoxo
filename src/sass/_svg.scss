@@ -1,0 +1,20 @@
+svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 16px;
+
+  & > path {
+    stroke: currentColor;
+  }
+
+  &.x > path {
+    stroke-dasharray: 135.764;
+    stroke-dashoffset: 0;
+  }
+
+  &.o > path {
+    fill: none;
+    stroke-dasharray: 301.635;
+    stroke-dashoffset: 0;
+  }
+}

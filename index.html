@@ -5,17 +5,28 @@
     <title>XOXO Game</title>
     <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="assets/styles/game.css">
+    <link rel="stylesheet" href="dist/app.css">
 </head>
 <body>
     <main>
-       <div class="results">
+     <div class="results">
         <ul class="player">
-            <li id="playerX">X <strong>-</strong></li>
-            <li id="playerO">O <strong>-</strong></li>
+            <li id="playerX">
+                <svg class="x" viewBox="0 0 128 128">
+                    <path d="M16,16L112,112"></path>
+                    <path d="M112,16L16,112"></path>
+                </svg>
+                <span>-</span>
+            </li>
+            <li id="playerO">
+                <svg class="o" viewBox="0 0 128 128">
+                    <path d="M64,16A48,48 0 1,0 64,112A48,48 0 1,0 64,16"></path>
+                </svg>
+                <span>-</span>
+            </li>
         </ul>
-       </div>
-       <div class="game">
+    </div>
+    <div class="game">
         <div class="board"></div>
     </div>
     <div class="options">

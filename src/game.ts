@@ -88,8 +88,8 @@ export default class Xoxo {
     private _showResult(player: any) {
         this._results[player] = this._results[player] ? this._results[player] + 1 : 1;
         const target = document.getElementById(player);
-        if (target && target.firstElementChild) {
-            (<HTMLElement>target.firstElementChild).innerText = this._results[player];
+        if (target && target.lastElementChild) {
+            (<HTMLElement>target.lastElementChild).innerText = this._results[player];
         }
     }
 

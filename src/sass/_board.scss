@@ -1,0 +1,71 @@
+.board {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  width: 380px;
+  margin: 0 auto;
+  padding: 24px;
+
+  &.game-over {
+    pointer-events: none;
+
+    & > div:not(.winning-sequence) {
+      opacity: .6;
+    }
+  }
+
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    cursor: pointer;
+    font-size: 6em;
+
+    & > svg {
+      width: 52px;
+      height: 52px;
+
+      &.x {
+        color: $dark-color;
+      }
+
+      &.o {
+        color: $light-color;
+      }
+    }
+  }
+
+  & > div.winning-sequence path {
+    stroke: $accent-color !important;
+  }
+
+  @each $index in 1 3 4 6 {
+    & > div:nth-child(#{$index}) {
+      border-bottom: 10px solid darken($primary-color, 5%);
+    }
+  }
+
+  @each $index in 2 5 {
+    & > div:nth-child(#{$index}) {
+      border-left: 10px solid darken($primary-color, 5%);
+      border-right: 10px solid darken($primary-color, 5%);
+      border-bottom: 10px solid darken($primary-color, 5%);
+    }
+  }
+
+  & > div:nth-child(8) {
+    border-left: 10px solid darken($primary-color, 5%);
+    border-right: 10px solid darken($primary-color, 5%);
+  }
+
+  @include inMobile {
+    & {
+      width: 100vw;
+      height: 100vw;
+    }
+
+    & > div {
+      height: auto;
+    }
+  }
+}
